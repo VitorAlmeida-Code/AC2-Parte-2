@@ -6,7 +6,7 @@ API REST para gerenciamento de clínicas veterinárias, desenvolvida para a PetC
 
 | Nome | RA |
 |------|----|
-| _preencher_ | _preencher_ |
+| Vitor Augusto de Almeida | 240238 |
 
 ## Tecnologias
 
