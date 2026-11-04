@@ -28,7 +28,6 @@ public class Tutor {
     @Column(length = 120, nullable = false)
     private String nome;
 
-    /** Guardado somente com os 11 dígitos, para que a máscara não burle a unicidade. */
     @Column(length = 11, nullable = false, unique = true)
     private String cpf;
 

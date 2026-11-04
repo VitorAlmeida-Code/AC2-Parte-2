@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> {
 
-    /** Consulta personalizada: atendimentos de um animal, do mais recente para o mais antigo. */
     @Query("""
             select a from Atendimento a
             join fetch a.consulta c
@@ -20,7 +19,6 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
             """)
     List<Atendimento> buscarHistoricoDoAnimal(@Param("animalId") Long animalId);
 
-    /** Consulta personalizada: todos os atendimentos, do mais recente para o mais antigo. */
     @Query("""
             select a from Atendimento a
             join fetch a.consulta c

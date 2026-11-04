@@ -33,8 +33,6 @@ public class ConsultaServiceImpl implements ConsultaService {
     public DadosConsultaDTO agendar(ConsultaRequestDTO dto) {
         Animal animal = animalRepository.findById(dto.getAnimalId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Animal não encontrado."));
-        // O bloqueio dura até o fim da transação: um segundo agendamento do mesmo veterinário
-        // espera este terminar e, ao verificar o horário, já enxerga a consulta gravada aqui.
         Veterinario veterinario = veterinarioRepository.buscarPorIdComBloqueio(dto.getVeterinarioId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Veterinário não encontrado."));
 

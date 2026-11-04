@@ -11,6 +11,5 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
 
     boolean existsByCpfAndIdNot(String cpf, Long id);
 
-    /** Consulta personalizada: busca tutores por parte do nome. */
     List<Tutor> findByNomeContainingIgnoreCaseOrderByNome(String nome);
 }

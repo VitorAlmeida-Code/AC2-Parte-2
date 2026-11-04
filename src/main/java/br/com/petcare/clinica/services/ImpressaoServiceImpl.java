@@ -155,7 +155,6 @@ public class ImpressaoServiceImpl implements ImpressaoService {
                 """.formatted(esc(titulo), ESTILO, corpo);
     }
 
-    /** Escapa o texto digitado pelo usuário para que ele não seja interpretado como HTML na página. */
     private String esc(String valor) {
         return valor == null || valor.isBlank() ? "&mdash;" : HtmlUtils.htmlEscape(valor, "UTF-8");
     }

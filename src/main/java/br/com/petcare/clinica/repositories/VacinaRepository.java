@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface VacinaRepository extends JpaRepository<Vacina, Long> {
 
-    /** Consulta personalizada: carteira de vacinação do animal, da aplicação mais recente para a mais antiga. */
     List<Vacina> findByAnimalIdOrderByDataAplicacaoDesc(Long animalId);
 }

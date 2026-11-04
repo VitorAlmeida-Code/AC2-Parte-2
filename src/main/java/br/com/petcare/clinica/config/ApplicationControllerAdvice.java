@@ -61,13 +61,11 @@ public class ApplicationControllerAdvice {
         return resposta(HttpStatus.BAD_REQUEST, new ApiErrorDTO("O parâmetro '" + ex.getParameterName() + "' é obrigatório."));
     }
 
-    /** Duas requisições simultâneas podem passar pelas verificações do service; a restrição do banco barra a segunda. */
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ApiErrorDTO> handleIntegridade(DataIntegrityViolationException ex) {
         return resposta(HttpStatus.CONFLICT, new ApiErrorDTO("A operação conflita com dados já registrados."));
     }
 
-    /** O tipo é fixado em JSON porque os endpoints de impressão produzem HTML. */
     private ResponseEntity<ApiErrorDTO> resposta(HttpStatus status, ApiErrorDTO erro) {
         return ResponseEntity.status(status).contentType(MediaType.APPLICATION_JSON).body(erro);
     }

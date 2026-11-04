@@ -18,7 +18,6 @@ public interface VeterinarioRepository extends JpaRepository<Veterinario, Long> 
 
     boolean existsByEspeciesId(Long especieId);
 
-    /** Consulta personalizada: veterinários habilitados para atender uma espécie. */
     @Query("""
             select distinct v from Veterinario v
             join v.especies e
@@ -27,10 +26,6 @@ public interface VeterinarioRepository extends JpaRepository<Veterinario, Long> 
             """)
     List<Veterinario> buscarHabilitadosParaEspecie(@Param("especieId") Long especieId);
 
-    /**
-     * Consulta personalizada: trava a linha do veterinário até o fim da transação. Assim, dois
-     * agendamentos simultâneos para o mesmo veterinário são verificados um de cada vez.
-     */
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("select v from Veterinario v where v.id = :id")
     Optional<Veterinario> buscarPorIdComBloqueio(@Param("id") Long id);

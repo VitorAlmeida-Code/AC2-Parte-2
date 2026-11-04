@@ -666,7 +666,6 @@ class PetCareApiTests {
         return idDe(enviarPost("/api/veterinario", corpoVeterinario(crmv, especies)));
     }
 
-    /** Agendar no passado é proibido pela API, por isso a consulta de ontem é gravada direto no banco. */
     private long consultaDeOntem() {
         Animal animal = animalRepository.findById(rex).orElseThrow();
         Veterinario medico = veterinarioRepository.findById(veterinario).orElseThrow();

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** Referência curta a outro registro (tutor, animal ou veterinário) dentro de uma resposta. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

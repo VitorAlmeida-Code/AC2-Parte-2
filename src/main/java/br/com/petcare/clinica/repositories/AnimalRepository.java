@@ -10,7 +10,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     boolean existsByEspecieId(Long especieId);
 
-    /** Consulta personalizada: lista os animais já trazendo espécie e tutor em uma única query. */
     @Query("""
             select a from Animal a
             join fetch a.especie

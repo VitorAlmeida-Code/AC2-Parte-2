@@ -13,7 +13,6 @@ import java.util.List;
 
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 
-    /** Consulta personalizada: indica se o veterinário já ocupa o horário (consultas canceladas liberam a vaga). */
     boolean existsByVeterinarioIdAndDataAndHorarioAndStatusNot(Long veterinarioId, LocalDate data, LocalTime horario,
                                                                StatusConsulta status);
 
@@ -22,7 +21,6 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
     boolean existsByVeterinarioIdAndStatusAndAnimalEspecieIdNotIn(Long veterinarioId, StatusConsulta status,
                                                                   Collection<Long> especiesIds);
 
-    /** Consulta personalizada: agenda com filtros opcionais por animal, veterinário, data e status. */
     @Query("""
             select c from Consulta c
             join fetch c.animal a
