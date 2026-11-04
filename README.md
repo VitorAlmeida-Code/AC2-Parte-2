@@ -2,7 +2,7 @@
 
 API REST para gerenciamento de clínicas veterinárias, desenvolvida para a PetCare Digital Solutions LTDA com Java, Spring Boot, Spring Data JPA e banco de dados relacional H2.
 
-## Integrantes
+## Aluno
 
 | Nome | RA |
 |------|----|
