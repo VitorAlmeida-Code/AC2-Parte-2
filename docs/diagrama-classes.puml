@@ -1,0 +1,89 @@
+@startuml diagrama-classes
+title PetCare - Diagrama de Classes
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam dpi 130
+skinparam nodesep 90
+skinparam ranksep 90
+skinparam class {
+  BorderColor #333333
+  ArrowColor #333333
+}
+hide circle
+hide empty methods
+
+legend right
+  |<#E3EEF9>     | Cadastro de animais e tutores |
+  |<#FBEFD9>     | Veterinários e consultas |
+  |<#E5F3E3>     | Prontuário e vacinação |
+endlegend
+
+class Tutor #E3EEF9 {
+  - id : Long
+  - nome : String
+  - cpf : String
+  - telefone : String
+  - endereco : String
+}
+
+class Animal #E3EEF9 {
+  - id : Long
+  - nome : String
+  - raca : String
+  - dataNascimento : LocalDate
+}
+
+class Especie #E3EEF9 {
+  - id : Long
+  - nome : String
+}
+
+class Veterinario #FBEFD9 {
+  - id : Long
+  - nome : String
+  - crmv : String
+}
+
+class Consulta #FBEFD9 {
+  - id : Long
+  - local : String
+  - data : LocalDate
+  - horario : LocalTime
+  - status : StatusConsulta
+}
+
+enum StatusConsulta #FBEFD9 {
+  AGENDADA
+  REALIZADA
+  CANCELADA
+}
+
+class Atendimento #E5F3E3 {
+  - id : Long
+  - diagnostico : String
+  - observacoes : String
+  - orientacoes : String
+  - dataRegistro : LocalDateTime
+}
+
+class Vacina #E5F3E3 {
+  - id : Long
+  - nome : String
+  - dataAplicacao : LocalDate
+  - lote : String
+}
+
+Tutor "1" -down- "0..*" Animal : possui >
+Animal "0..*" -right-> "1" Especie : pertence a >
+Vacina "0..*" -right- "1" Animal : aplicada em >
+Animal "1" -down- "0..*" Consulta : é atendido em >
+Veterinario "1" -left- "0..*" Consulta : realiza >
+Veterinario "0..*" -up-> "1..*" Especie : pode atender >
+Atendimento "0..1" -up-> "1" Consulta : registra >
+Consulta .left.> StatusConsulta
+
+Animal -[hidden]down- Veterinario
+
+@enduml
